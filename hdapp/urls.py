@@ -3,13 +3,16 @@ from . import views
 
 
 urlpatterns = [
-    #path('', views.home, name='home'),
-    #path('login/', views.login, name = 'login'),
-    #path('createprofile/', views.make_profile, name = 'createprofile'),
-    #re_path('profile/(?P<id>\d+)/',views.view_profile,name = 'myprofile'),
-    #path('profile/<int:id>/', views.view_profile, name = 'myprofile'),
-    #path('post/',views.posting_project, name='post'),
-    #path('logout/',views.logout_user, name='logout'),
-    #path('search/', views.search,name='search-project'),
+    #path('api/user', views.UserList.as_view()),
+    path('', views.index, name = 'index'),
+    #path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    #path('api/token/refresh/',TokenRefreshView.as_view(), name='token_refresh'),
+    #path('api/v1/create_hood',views.HoodList.as_view()),
+    #path('api/v1/hoods', views.AllHoodsList.as_view()),
+    #path('api/v1/view_hood/<int:pk>', views.SingleHoodList.as_view()),
+    #path('api/v1/post', views.CreatePostView.as_view()),
+    #path('api/v1/create_business/<int:pk>', views.CreateBusinessView.as_view()),
+    #path('api/v1/create_dept/<int:pk>', views.CreateDepartmentView.as_view()),
+    #path('api/v1/profile/<int:pk>/<int:id>', views.EditProfileView.as_view())
 
 ]
