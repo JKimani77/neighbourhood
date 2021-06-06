@@ -53,6 +53,7 @@ cloudinary.config(
     api_secret = config('CLOUD_API_SECRET'),
     secure = True
 )
+AUTH_USER_MODEL = 'hdapp.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

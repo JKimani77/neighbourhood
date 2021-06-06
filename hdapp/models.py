@@ -3,13 +3,14 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 import datetime as dt
 from django.contrib.auth.models import AbstractUser,User
-from django.db.models.fields import IntegerField, TextField
+from django.db.models.fields import IntegerField, TextField, related
+from projhd.settings import *
 
 class Neighbourhood(models.Model):
     hdname = models.CharField(max_length = 40)
     location = models.CharField(max_length=30)
     occupants = models.IntegerField(default=0)
-    admin = models.ForeignKey(User, on_delete=models.CASCADE)
+    admin = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def save_neighbourhood(self):
         self.save()
