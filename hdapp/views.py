@@ -59,7 +59,11 @@ def create_profile(request):
 
 
 
-
+def view_profile(request, id):
+    
+    current_user = request.user
+    profile = Profile.objects.filter(id = id).all()
+    return render(request, 'myprofile.html',{"profile":profile}) #{"projects":projects})
 
 
 
