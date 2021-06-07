@@ -36,6 +36,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,9 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'cloudinary',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'dj_rest_auth',
     'hdapp',
     
 ]
@@ -61,6 +61,7 @@ AUTH_USER_MODEL = 'hdapp.User'
 REST_FRAMEWORK = {
   'DEFAULT_PERMISSION_CLASSES': (
       'rest_framework.permissions.IsAuthenticated',
+       'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
   ),
   'DEFAULT_AUTHENTICATION_CLASSES': (
       'rest_framework_jwt.authentication.JSONWebTokenAuthentication',

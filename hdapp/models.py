@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 class Neighbourhood(models.Model):
     hdname = models.CharField(max_length = 40)
     location = models.CharField(max_length=30)
-    occupants = models.IntegerField(default=0)
+    occupants = models.IntegerField(default=80)
     admin = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def save_neighbourhood(self):
@@ -36,10 +36,10 @@ class User(AbstractUser):
         (ADMIN, 'ADMIN'),
         (USER, 'USER')
     ]
-    username = models.CharField(max_length=20)
+    username = models.CharField(max_length=40,blank = True, null = True,)
     email = models.EmailField(_('email address'), unique = True)
-    native_name = models.CharField(max_length=50)
-    role = models.CharField(max_length=20, choices=ROLE_TYPE_CHOICES, default=USER)
+    native_name = models.CharField( max_length=100)
+    role = models.CharField(max_length=40, choices=ROLE_TYPE_CHOICES, default=USER)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
     def __str__(self):
@@ -54,9 +54,9 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-    about = models.TextField()
+    about = models.TextField(max_length=68)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
-    my_location = models.CharField(max_length=20)
+    my_location = models.CharField(max_length=40)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     
     def save_pfile(self):
@@ -74,7 +74,7 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    content = models.TextField()
+    content = models.TextField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     when_posted = models.DateTimeField(auto_now_add=True)
     
@@ -82,8 +82,8 @@ class Post(models.Model):
         self.save()
 
 class Business(models.Model):
-    name = models.CharField(max_length=20)
-    email = models.CharField(max_length=20)
+    name = models.CharField(max_length=40)
+    email = models.CharField(max_length=40)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
@@ -94,7 +94,7 @@ class Business(models.Model):
 
 class Department(models.Model):
     contact = models.IntegerField()
-    name = models.CharField(max_length=30, blank=True)
+    name = models.CharField(max_length=40, blank=True)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 
 

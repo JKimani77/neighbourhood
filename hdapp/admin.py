@@ -8,19 +8,18 @@ from .models import User
 class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     fieldsets = (
-	    (None, {'fields': ('email', 'password', )}),
-	    (_('Personal info'), {'fields': ('first_name', 'last_name')}),
-	    (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
-									'groups', 'user_permissions')}),
-	    (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-    )
+        (None, {'fields': ('email', 'password' )}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser','groups', 'user_permissions')}),
+        (_('user_info'), {'fields': ('native_name')}),
+        )
     add_fieldsets = (
-	    (None, {
-		    'classes': ('wide', ),
-		    'fields': ('email', 'password1', 'password2'),
-	    }),
-    )
+        (None, {
+            'classes': ('wide', ),
+            'fields': ('email', 'password1', 'password2'),
+            }),
+            )
     list_display = ['email', 'first_name', 'last_name', 'is_staff', "native_name"]
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email', )
-admin.site.register(User, UserAdmin)
+    admin.site.register(User, UserAdmin)

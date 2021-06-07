@@ -4,10 +4,8 @@ from django.contrib.auth.models import User
 from .models import *
 from django.forms import SelectMultiple
 
-
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField()
-    
     
     class Meta(UserCreationForm.Meta):
         model = User
