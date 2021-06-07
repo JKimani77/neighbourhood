@@ -1,5 +1,7 @@
 from django.urls import path, re_path
 from . import views
+from django.conf.urls import include
+from django.contrib import admin
 
 
 urlpatterns = [
@@ -7,7 +9,7 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('login/', views.login, name = 'login'),
     path('logout/',views.logout_user, name='logout'),
-    path('accounts/register/', views.register, name='register')
+    path('auth/', include('dj_rest_auth.urls')),
     #path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     #path('api/token/refresh/',TokenRefreshView.as_view(), name='token_refresh'),
     #path('api/v1/create_hood',views.HoodList.as_view()),

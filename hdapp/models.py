@@ -4,13 +4,14 @@ from cloudinary.models import CloudinaryField
 import datetime as dt
 from django.contrib.auth.models import AbstractUser,User
 from django.db.models.fields import IntegerField, TextField, related
-from projhd.settings import *
+from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 class Neighbourhood(models.Model):
     hdname = models.CharField(max_length = 40)
     location = models.CharField(max_length=30)
     occupants = models.IntegerField(default=0)
-    admin = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
+    admin = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def save_neighbourhood(self):
         self.save()
@@ -35,9 +36,15 @@ class User(AbstractUser):
         (ADMIN, 'ADMIN'),
         (USER, 'USER')
     ]
-    name = models.CharField(max_length=20)
+    username = models.CharField(max_length=20)
+    email = models.EmailField(_('email address'), unique = True)
+    native_name = models.CharField(max_length=50)
     role = models.CharField(max_length=20, choices=ROLE_TYPE_CHOICES, default=USER)
-    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    def __str__(self):
+      return "{}".format(self.email)
+
     def save_superuserdmin(self):
         self.save()
     def save_admin(self):

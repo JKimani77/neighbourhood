@@ -17,20 +17,7 @@ def index(request):
 
     return render(request, 'index.html', {'neighbourhoods':neighbourhoods, 'posts':posts, 'departments':departments} )
 
-def register(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(data=request.POST)
-        if form.is_valid():
-        
-            user = authenticate(request)
-            if user.is_authenticated:
-                return redirect(login)
-            else:
-                return "Unable to register"
 
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'django-registration/registration_form.html',{"form":form})
 
 
 
@@ -56,3 +43,135 @@ def login(request):
 def logout_user(request):
     logout(request)
     return redirect(index)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #def register(request):
+    #if request.method == 'POST':
+        #form = CustomUserCreationForm(data=request.POST)
+        #if form.is_valid():
+        
+            #user = authenticate(request)
+            #if user.is_authenticated:
+                #return redirect(login)
+            #else:
+                #return "Unable to register"
+
+   # else:
+        #form = CustomUserCreationForm()
+    #return render(request, 'django-registration/registration_form.html',{"form":form})
