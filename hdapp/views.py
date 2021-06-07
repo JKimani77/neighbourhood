@@ -44,6 +44,19 @@ def logout_user(request):
     logout(request)
     return redirect(index)
 
+def create_profile(request):
+    current_user = request.user
+    if request.method=="POST":
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save_profile()
+            return redirect(index)
+    else:
+        form = ProfileForm()
+    return render(request, 'makeprofile.html',{"form":form})
+
 
 
 

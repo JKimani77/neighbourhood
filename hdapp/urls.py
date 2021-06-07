@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.login, name = 'login'),
     path('logout/',views.logout_user, name='logout'),
     path('auth/', include('dj_rest_auth.urls')),
+    path('makeprofile/', views.make_profile, name = 'makeprofile'),
     #path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     #path('api/token/refresh/',TokenRefreshView.as_view(), name='token_refresh'),
     #path('api/v1/create_hood',views.HoodList.as_view()),

@@ -15,3 +15,11 @@ class CustomUserCreationForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Username',  max_length=254)
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
+
+
+
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ('about','my_location')
