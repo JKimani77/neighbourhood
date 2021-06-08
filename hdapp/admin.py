@@ -1,3 +1,4 @@
+from hdapp.forms import NeighbourhoodForm
 from django.contrib import admin
 from django.contrib.auth.forms import UserChangeForm
 from django.utils.translation import ugettext_lazy as _
@@ -23,3 +24,10 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email', )
     admin.site.register(User, UserAdmin)
+
+
+class NeighbourhoodAdmin(UserAdmin):
+    form = NeighbourhoodForm
+    fieldsets = (
+        (None, {'fields': ('email', 'password' )}),
+     )

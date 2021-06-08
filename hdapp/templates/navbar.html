@@ -12,20 +12,17 @@
         </li>
         <li style="margin-top: 50px;" class="nav-item">
           <a class="nav-link" href="">{{ user.username }}</a>
-          <!--profile/{{request.user.id}}/-->
         </li>
         
         <li style="margin-top: 50px;" class="nav-item">
           <a class="nav-link" href="">Submit Project</a>
-        <!--{%url 'post'%}-->
         </li>
         <li style="margin-top: 50px;" class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
 
         <li style="margin-top: 50px; margin-left: 700px;" class="nav-item">
-          <a class="nav-link" href="">UpdateProfile</a>
-          <!--{% url 'createprofile'%}-->
+          <a class="nav-link" href="{% url 'createprofile'%}">UpdateProfile</a>
         </li>
         
 

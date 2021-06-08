@@ -23,3 +23,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('about','my_location')
+
+class NeighbourhoodForm(forms.ModelForm):
+
+    class Meta:
+        model = Neighbourhood
+        fields = ('hdname','location','occupants')
+#

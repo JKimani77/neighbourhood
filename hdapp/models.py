@@ -55,9 +55,9 @@ class User(AbstractUser):
 
 class Profile(models.Model):
     about = models.TextField(max_length=68)
-    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
     my_location = models.CharField(max_length=40)
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     
     def save_pfile(self):
         self.save()

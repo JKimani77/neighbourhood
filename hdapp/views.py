@@ -14,8 +14,8 @@ def index(request):
     neighbourhoods = Neighbourhood.objects.all()
     posts = Post.objects.all()
     departments = Department.objects.all()
-
-    return render(request, 'index.html', {'neighbourhoods':neighbourhoods, 'posts':posts, 'departments':departments} )
+    businesses = Business.objects.all()
+    return render(request, 'index.html', {'neighbourhoods':neighbourhoods, 'posts':posts, 'departments':departments, "businesses":businesses} )
 
 
 
@@ -51,11 +51,12 @@ def create_profile(request):
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = current_user
-            profile.save_profile()
+            profile.save()
             return redirect(index)
     else:
         form = ProfileForm()
     return render(request, 'makeprofile.html',{"form":form})
+
 
 
 
@@ -65,7 +66,9 @@ def view_profile(request, id):
     profile = Profile.objects.filter(id = id).all()
     return render(request, 'myprofile.html',{"profile":profile}) #{"projects":projects})
 
-
+def view_hood_details(request,id):
+    hood = Neighbourhood.objects.filter(id = id).all()
+    return render(request,'details.html', {"hood":hood} )
 
 
 
