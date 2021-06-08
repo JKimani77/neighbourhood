@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.contrib.auth import authenticate,login, logout
-
+#rest framework not reading from installed apps 
 #from rest_framework.permissions import IsAuthenticated
 from django.http import Http404
 
