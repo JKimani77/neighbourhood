@@ -12,5 +12,5 @@ urlpatterns = [
     path('auth/', include('dj_rest_auth.urls')),
     path('makeprofile/', views.create_profile, name = 'createprofile'),
     re_path('profile/(?P<id>\d+)/',views.view_profile,name = 'myprofile'),
-    
+    #
 ]
